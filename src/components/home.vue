@@ -1,0 +1,512 @@
+<template>
+  <div class="home">
+    <Nav />
+    <section class="home-section">
+      <div class="col-lg-4">
+        <div class="sideA">
+          <h1>Become A Paysure Agent Today</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At
+          </p>
+          <div class="btns">
+            <router-link to="/signUp" tag="button">Get Started</router-link>
+            <button>Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 hero">
+        <img class="img-fluid abs" src="../assets/hero.png" />
+      </div>
+    </section>
+    <!-- <div id="overlay">
+      <h1 class="content">Become A Paysure Agent Today</h1>
+      <br />
+      <p class="small">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At
+      </p>
+      <br />
+      <br />
+      <button class="signUp">Get Started</button>
+      <button class="learnMore">Learn More</button>
+    </div>
+  </div> -->
+    <section>
+      <div class="container">
+        <div class="row center">
+          <div class="col-lg-6">
+            <h1 class="primary-text offer-text col-lg-10">What we offer You</h1>
+            <p class="col-lg-8 mt-8">
+              Lorem Ipsum has been the industry's standard dummy text ever since
+              the 1500s, when an unknown printer took.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <img class="img-fluid" src="../assets/offer.svg" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="">
+      <div class="mt-5">
+        <h3 class="center">Benefits of Becoming an agent</h3>
+        <div class="container mt-3 bkg">
+          <div class="row section-head mt-5">
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="center">
+                  <img class="img-fluid " src="../assets/45.svg" />
+                </div>
+
+                <h3 class="center">Sales Improvement</h3>
+                <div class="card-body center">
+                  Gain valuable tips and hacks you need to create an appealing
+                  resume and navigate interview scenarios.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="center">
+                  <img class="img-fluid " src="../assets/45.svg" />
+                </div>
+
+                <h3 class="center">Sales Improvement</h3>
+                <div class="card-body center">
+                  Gain valuable tips and hacks you need to create an appealing
+                  resume and navigate interview scenarios.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="center">
+                  <img class="img-fluid " src="../assets/41.svg" />
+                </div>
+
+                <h3 class="center">Sales Improvement</h3>
+                <div class="card-body center">
+                  Gain valuable tips and hacks you need to create an appealing
+                  resume and navigate interview scenarios.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="">
+      <div class="mt-5">
+        <h3 class="center">Benefits of Becoming an agent</h3>
+        <div class="container mt-3 bkg">
+          <div class="row section-head mt-5">
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="center">
+                  <img class="img-fluid " src="../assets/41.svg" />
+                </div>
+
+                <h3 class="center">Sales Improvement</h3>
+                <div class="card-body center">
+                  Gain valuable tips and hacks you need to create an appealing
+                  resume and navigate interview scenarios.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="center">
+                  <img class="img-fluid " src="../assets/41.svg" />
+                </div>
+
+                <h3 class="center">Sales Improvement</h3>
+                <div class="card-body center">
+                  Gain valuable tips and hacks you need to create an appealing
+                  resume and navigate interview scenarios.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="center">
+                  <img class="img-fluid " src="../assets/41.svg" />
+                </div>
+
+                <h3 class="center">Sales Improvement</h3>
+                <div class="card-body center">
+                  Gain valuable tips and hacks you need to create an appealing
+                  resume and navigate interview scenarios.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="contact-us">
+        <form class="col-lg-4">
+          <h1 class="title center">Contact Us</h1>
+
+          <div class="form-group mt-3">
+            <label class="formlabel" for="formGroupExampleInput">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="formGroupExampleInput"
+              placeholder=""
+            />
+          </div>
+          <div class="form-group mt-3">
+            <label class="formlabel" for="formGroupExampleInput">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              id="formGroupExampleInput"
+              placeholder=""
+            />
+          </div>
+          <div class="form-group mt-3">
+            <label class="formlabel" for="formGroupExampleInput">Message</label>
+            <textarea
+              type="text"
+              class="form-control"
+              id="formGroupExampleInput"
+              placeholder=""
+              style="height:140px"
+            />
+          </div>
+          <div class="center mt-5">
+            <button class="btn-home" style="width:450px">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <Footer />
+  </div>
+</template>
+
+<script>
+import Nav from "@/components/nav";
+import Footer from "@/components/footer";
+export default {
+  name: "home",
+  components: {
+    Nav,
+    Footer,
+  },
+};
+</script>
+
+<style scoped>
+/* #overlay {
+  top: -597.968017578125px;
+  left: 517px;
+  width: 2069px;
+  height: 2069px;
+  background: transparent url("../assets/hero.png") 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.btn {
+  top: 34px;
+  left: 1597px;
+  width: 190px;
+  height: 52px;
+  background: #5323d7 0% 0% no-repeat padding-box;
+  border-radius: 9px;
+  opacity: 1;
+}
+.content {
+  top: 351px;
+  left: 141px;
+  width: 773px;
+  height: 180px;
+  text-align: left;
+  font: normal normal bold 85px/95px Graphik;
+  letter-spacing: 0px;
+  color: #272d4e;
+  opacity: 1;
+}
+p {
+  top: 566px;
+  left: 145px;
+  width: 716px;
+  height: 50px;
+  text-align: left;
+  font: normal normal normal 18px/25px Noto Sans;
+  letter-spacing: 0px;
+  color: #94a2b3;
+  opacity: 1;
+}
+.signUp {
+  top: 665px;
+  left: 145px;
+  width: 267px;
+  height: 72px;
+  background: #7854f7 0% 0% no-repeat padding-box;
+  border-radius: 26px;
+  opacity: 1;
+  text-align: center;
+  color: #ffffff;
+  font: normal normal bold 18px/24px Noto Sans;
+}
+
+.learnMore {
+  top: 665px;
+  left: 423px;
+  width: 267px;
+  height: 72px;
+  border: 1px solid #549bf7;
+  border-radius: 26px;
+  opacity: 1;
+  text-align: center;
+  color: #549bf7;
+  font: normal normal bold 18px/24px Noto Sans;
+} */
+/* .home-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+} */
+.home {
+  max-width: 100%;
+}
+.offer-text {
+  font-size: 60px;
+  font-weight: 600;
+}
+/* .hero {
+  /* background-image: url("../assets/hero.png");
+  background-size: cover; 
+  display: inline-block;
+  overflow: hidden;
+} */
+</style>
+<style>
+.home {
+  max-width: 100%;
+}
+.image {
+  width: 90%;
+  justify-self: center;
+  max-height: 100%;
+}
+.btn-home {
+  padding: 10px 10px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-radius: 4px;
+  width: 243px;
+  height: 52px;
+
+  cursor: pointer;
+  -moz-transition: box-shadow 1s;
+  -o-transition: box-shadow 1s;
+  -webkit-transition: box-shadow 1s;
+  transition: box-shadow 1s;
+}
+
+.btn-home:hover {
+  box-shadow: 0 8px 7px #999;
+}
+section {
+  /* height: calc(100vh - var(--header-height)); */
+  align-content: center;
+  position: relative;
+
+  background-size: contain;
+
+  padding: 1rem 0 2rem;
+}
+
+.white-text {
+  color: var(--white-color);
+}
+.space-x {
+  margin-top: 6rem;
+}
+
+.company {
+  padding: 10px 30px;
+  background-color: var(--primary-color);
+}
+
+.bottom-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.side-bar {
+  position: absolute;
+  right: 30px;
+  top: 9rem;
+  z-index: 1;
+}
+
+.card-icon {
+  padding: 10px 20px 10px 20px;
+  display: flex;
+}
+
+.card-headers {
+  padding: 10px 0px 0px 20px;
+  text-align: left;
+  font-size: var(--normal-font-size);
+  color: var(--text-color);
+}
+
+.card {
+  box-shadow: 0px 3px 15px #00000024;
+  /* filter: drop-shadow(2px 4px 6px #696969); */
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 0 !important;
+}
+
+.card-body {
+  text-align: left;
+}
+.card-hover {
+  transition: box-shadow 0.2s ease-in-out, transform 0.35s ease-in-out;
+  background-color: var(--body-color);
+  border: 1px solid var(--white-color) !important;
+}
+.card-hover:hover {
+  box-shadow: 0 11px 11px 0 rgba(0, 0, 0, 0.16) !important;
+  transform: translateY(-5px) !important;
+}
+.side-btn {
+  width: 53px;
+  height: 48px;
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 7px 0;
+}
+.contact-us {
+  display: flex;
+  justify-content: center;
+  background: var(--body-color);
+}
+.dash {
+  width: 40px;
+  height: 2px;
+  color: var(--primary-color);
+}
+.app-icons {
+  display: flex;
+  justify-content: flex-start;
+}
+.app-icon {
+  font-size: 25px;
+}
+@media screen and (max-width: 768px) {
+  .image {
+    width: 90%;
+    max-height: 100%;
+  }
+
+  .side-bar {
+    position: relative;
+    right: 0;
+    top: 0;
+  }
+}
+@media screen and (max-width: 992px) {
+  .image {
+    width: 90%;
+    max-height: 100%;
+  }
+
+  .side-bar {
+    position: relative;
+    right: 0;
+    top: 0;
+  }
+}
+.scrolltop {
+  position: fixed;
+  right: 1rem;
+  bottom: -20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+  background: rgba(6, 156, 84, 0.5);
+  border-radius: 0.4rem;
+  z-index: var(--z-tooltip);
+  transition: 0.4s;
+}
+.scrolltop:hover {
+  background-color: var(--first-color-alt);
+}
+.scrolltop__icon {
+  font-size: 1.8rem;
+  color: var(--body-color);
+}
+/* Show scrolltop */
+.show-scroll {
+  visibility: visible;
+  bottom: 1.5rem;
+}
+
+.section-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.left {
+  margin-left: 75px;
+}
+
+@media screen and (max-width: 992px) {
+  .left {
+    margin-left: 0px;
+  }
+}
+section {
+  margin-bottom: 1rem;
+}
+
+.btn-search {
+  background-color: var(--primary-color);
+}
+blockquote {
+  border: none;
+  margin: 0;
+  font-family: Georgia, Times, serif;
+  font-style: italic;
+  font-size: 32px;
+  color: white;
+}
+.card-body {
+  text-align: center !important;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color);
+}
+h3 {
+  font-size: var(--normal-font-size);
+}
+
+.card {
+  background-color: var(--body-color);
+}
+.bkg {
+  background-color: var(--body-color);
+}
+section {
+  background-color: var(--body-color);
+}
+input {
+  text-decoration: none;
+  outline: 1px solid var(--primary-color);
+}
+</style>
