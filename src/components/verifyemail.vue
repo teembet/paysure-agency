@@ -32,6 +32,7 @@
                 Please go to your email to verify your account to enable you use
                 our features
               </p>
+              <router-link to="/tokenpage" class="btn-login col-lg-6 mt-5" tag="button">Continue</router-link>
             </div>
           </div>
         </div>
@@ -41,8 +42,21 @@
 </template>
 
 <script>
+import Loader from "@/components/loader.vue";
 export default {
   name: "Verifyemail",
+  components: {
+    Loader,
+  },
+  data(){
+    return{
+      loader:false
+    }
+  },
+
+  mounted(){
+    this.loader=false
+  }
 };
 </script>
 

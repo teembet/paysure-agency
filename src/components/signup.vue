@@ -348,8 +348,9 @@ export default {
   methods: {
     checkFirstPage() {
       console.log("tim");
-
+this.loader=true;
       if (this.form.password !== this.confirmPassword) {
+        this.loader=false
         this.secondPage = false;
         this.firstPage = true;
         console.log("true");
@@ -360,7 +361,9 @@ export default {
           dismissible: true,
           position: "top-right",
         });
+        return
       } else {
+        this.loader=false
         this.next();
       }
     },
@@ -383,55 +386,57 @@ export default {
       this.form.noOfTerminalOnSignUp = "";
     },
     async submitForm() {
-      try {
+      this.$router.push('/verifyemail')
+      // try {
         this.loader = true;
-        const user = await this.axios.post(
-          "http://52.149.222.131:5009/api/v1/users/register/agent",
-          // "uniqueParameter" : this.email,
-          // "password": this.password
-          this.form
-          // {
-          //   addressLine1: "no 17 Kado Binko",
-          //   addressLine2: "",
-          //   agentName: "Babatope Oke",
-          //   bvn: "22222222223",
-          //   city: "FCT Abuja",
-          //   contactPersonName: "Babatope Oke",
-          //   emailAddress: "babatope.oke@bizzdeskgroup.com",
-          //   lga: "AMAC",
-          //   logoUrl: "",
-          //   password: "1234567890",
-          //   phoneNumber: "08064518152",
-          //   state: "FCT Abuja",
-          //   transactionPin: "1234",
-          //   username: "babatope",
-          // }
-        );
-        if (user.data.responseCode === 0) {
-          // const currentUser = JSON.parse(user.data.data)
-          this.loader = false;
-          this.form;
-        } else {
-          this.loader = false;
-          this.$toast.open({
-            message: `<p style="color:white;">${user.data.responseMessage}</p>`,
-            type: "error",
-            duration: 5000,
-            dismissible: true,
-            position: "top-right",
-          });
-        }
-      } catch (e) {
-        this.loader = false;
-        this.$toast.open({
-          message: `<p style="color:white;">${e}</p>`,
-          type: "error",
-          duration: 5000,
-          dismissible: true,
-          position: "top-right",
-        });
-        console.log(e);
-      }
+        // const user = await this.axios.post(
+        //   "http://52.149.222.131:5009/api/v1/users/register/agent",
+        //   // "uniqueParameter" : this.email,
+        //   // "password": this.password
+        //   this.form
+        //   // {
+        //   //   addressLine1: "no 17 Kado Binko",
+        //   //   addressLine2: "",
+        //   //   agentName: "Babatope Oke",
+        //   //   bvn: "22222222223",
+        //   //   city: "FCT Abuja",
+        //   //   contactPersonName: "Babatope Oke",
+        //   //   emailAddress: "babatope.oke@bizzdeskgroup.com",
+        //   //   lga: "AMAC",
+        //   //   logoUrl: "",
+        //   //   password: "1234567890",
+        //   //   phoneNumber: "08064518152",
+        //   //   state: "FCT Abuja",
+        //   //   transactionPin: "1234",
+        //   //   username: "babatope",
+        //   // }
+        // );
+        // if (user.data.responseCode === 0) {
+        //   // const currentUser = JSON.parse(user.data.data)
+        //   this.loader = false;
+        //   this.form;
+        // } else {
+        //   this.loader = false;
+        //   this.$toast.open({
+        //     message: `<p style="color:white;">${user.data.responseMessage}</p>`,
+        //     type: "error",
+        //     duration: 5000,
+        //     dismissible: true,
+        //     position: "top-right",
+        //   });
+        // }
+    //  } 
+      // catch (e) {
+      //   this.loader = false;
+      //   this.$toast.open({
+      //     message: `<p style="color:white;">${e}</p>`,
+      //     type: "error",
+      //     duration: 5000,
+      //     dismissible: true,
+      //     position: "top-right",
+      //   });
+      //   console.log(e);
+      // }
     },
     selectFile(event) {
       console.log("here");

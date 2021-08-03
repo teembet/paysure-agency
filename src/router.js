@@ -3,7 +3,7 @@ import Router from "vue-router";
 import Home from "@/components/home";
 import Verifyemail from "@/components/verifyemail";
 import signup from "@/components/signup";
-
+import TokenPage from "@/components/tokenPage"
 Vue.use(Router);
 export default new Router({
   routes: [
@@ -22,6 +22,11 @@ export default new Router({
       path: "/verifyemail",
       name: "verifyemail",
       component: Verifyemail,
+    },
+    {
+      path: "/tokenpage",
+      name: "tokenpage",
+      component: TokenPage,
     },
 
     // {

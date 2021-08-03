@@ -13,11 +13,12 @@ import Popper from "popper.js";
 import NaijaStates from "naija-state-local-government";
 import axios from "axios";
 import VueToast from "vue-toast-notification";
+import anime from 'animejs/lib/anime.es.js';
 
 import "vue-toast-notification/dist/theme-sugar.css";
 
 Vue.config.productionTip = false;
-Vue.use(VueRouter, $, Popper, VueCarousel, NaijaStates, axios, VueToast);
+Vue.use(anime,VueRouter, $, Popper, VueCarousel, NaijaStates, axios, VueToast);
 // Vue.prototype.$toast = VueToast;
 // let instance = Vue.$toast.open("You did it!");
 
@@ -26,6 +27,7 @@ Vue.use(VueRouter, $, Popper, VueCarousel, NaijaStates, axios, VueToast);
 // // Dismiss all opened toast immediately
 // Vue.$toast.clear();
 Vue.prototype.axios = axios;
+Vue.prototype.$anime=anime;
 
 new Vue({
   router,
