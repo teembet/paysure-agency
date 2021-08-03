@@ -10,7 +10,7 @@
             <img src="../assets/paysure.png" class="img-fluid" />
           </router-link>
 
-          <button
+          <!-- <button
             type="button"
             class="navbar-toggler btn btn-icon btn-sm rounded-circle"
             aria-label="Toggle navigation"
@@ -46,9 +46,9 @@
                 />
               </svg>
             </span>
-          </button>
+          </button> -->
 
-          <div id="navBar" class="collapse navbar-collapse">
+          <!-- <div id="navBar" class="collapse navbar-collapse">
             <div class="navbar-body header-abs-top-inner">
               <ul class="navbar-nav">
                 <div></div>
@@ -63,22 +63,9 @@
                     Become An Agent
                   </router-link>
                 </li>
-
-                <li class="hs-has-mega-menu navbar-nav-item">
-                  <div class="container-d">
-                    <label class="toggle">
-                      <input
-                        type="checkbox"
-                        @change="changeTheme()"
-                        id="checkbox"
-                      />
-                      <span class="slider round material-icons"></span>
-                    </label>
-                  </div>
-                </li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </nav>
       </div>
     </div>

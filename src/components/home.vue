@@ -1,43 +1,78 @@
 <template>
   <div class="home">
     <Nav />
-    <section class="home-section">
-      <div class="col-lg-4">
-        <div class="sideA">
-          <h1>Become A Paysure Agent Today</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At
-          </p>
-          <div class="btns">
-            <router-link to="/signUp" tag="button">Get Started</router-link>
-            <button>Learn More</button>
+    <section>
+      <img class="img-fluid abs d-sm-none" src="../assets/hero.png" />
+      <div class="container space-x">
+        <div class=""></div>
+        <div class="row">
+          <div class="col-lg-7 mt-5 center mb-5">
+            <div class="">
+              <h1 style="color:#272D4E;font-size:60px;font-weight:700">
+                Become A Paysure Agent Today
+              </h1>
+              <p style="color:#94A2B3">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At
+              </p>
+              <div class="btns mt-4">
+                <router-link
+                  to="/signUp"
+                  tag="button"
+                  style="border:1px solid;border-radiud:23px;background-color:#7854F7;color:#fff;padding: 15px;
+    width: 200px;
+    border-radius: 23px;
+"
+                  >Get Started</router-link
+                >
+                <router-link
+                  class="ml-3"
+                  style="border:1px solid #7854F7;border-radiud:23px;background-color:#fff;color:#7854F7;padding: 15px;
+    width: 200px;
+    border-radius: 23px;
+
+"
+                  to="/verifyemail"
+                  tag="button"
+                >
+                  Learn More
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7 hero"></div>
+        </div>
+      </div>
+    </section>
+    <section class="mt-4">
+      <div class="container-fluid mt-5">
+        <h2 style="text-align:center;color:#5926D7;font-size:35px">Why Us</h2>
+        <div class="row mt-3">
+          <div class="col-lg-4 mt-5 pt-1">
+            <img
+              class="img-fluid"
+              src="../assets/Group 22.png"
+              alt="fast settlements"
+            />
+          </div>
+          <div class="col-lg-4">
+            <img
+              class="img-fluid"
+              src="../assets/Group 23.png"
+              alt="tested and trusted"
+            />
+          </div>
+          <div class="col-lg-4">
+            <img class="img-fluid" src="../assets/Group 23.png" alt="24hr" />
           </div>
         </div>
       </div>
-      <div class="col-lg-8 hero">
-        <img class="img-fluid abs" src="../assets/hero.png" />
-      </div>
     </section>
-    <!-- <div id="overlay">
-      <h1 class="content">Become A Paysure Agent Today</h1>
-      <br />
-      <p class="small">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At
-      </p>
-      <br />
-      <br />
-      <button class="signUp">Get Started</button>
-      <button class="learnMore">Learn More</button>
-    </div>
-  </div> -->
     <section>
-      <div class="container">
+      <div class="container mt-5">
         <div class="row center">
-          <div class="col-lg-6">
+          <div class="col-lg-6 ">
             <h1 class="primary-text offer-text col-lg-10">What we offer You</h1>
             <p class="col-lg-8 mt-8">
               Lorem Ipsum has been the industry's standard dummy text ever since
@@ -147,6 +182,31 @@
         </div>
       </div>
     </section>
+    <section>
+      <div class="container">
+        <div class="payments">
+          <div style="width:450px;height:50%;" class=" mt-5 pt-4 mx-5 px-4">
+            <h2 style="color:white; line-height:50px;" class="mt-5 pt-5">
+              Start Accepting Payments <br />Today!!!.
+            </h2>
+            <p style="color:white;line-height:30px;">
+              Lorem Ipsum has been the industry's standard dummy text ever since
+              the 1500s, when an unknown printer took.
+            </p>
+            <button class="btn-home" style="width:450px">
+              Learn More
+            </button>
+          </div>
+          <div class=" d-flex justify-content-end ">
+            <img
+              style="width:450px; height: 50%;"
+              class="img-fluid paymt "
+              src="../assets/Group 7143.png"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="contact">
       <div class="contact-us">
         <form class="col-lg-4">
@@ -205,6 +265,13 @@ export default {
 </script>
 
 <style scoped>
+.abs {
+  position: absolute;
+  left: 27rem;
+  right: 0;
+  bottom: 0;
+  top: -32rem;
+}
 /* #overlay {
   top: -597.968017578125px;
   left: 517px;
@@ -294,6 +361,17 @@ p {
 <style>
 .home {
   max-width: 100%;
+}
+.payments {
+  background: #5323d7;
+}
+.paymt {
+  position: absolute;
+
+  left: 56rem;
+  right: 0;
+  bottom: -21rem;
+  top: 0rem;
 }
 .image {
   width: 90%;
@@ -416,6 +494,14 @@ section {
 
   .side-bar {
     position: relative;
+    right: 0;
+    top: 0;
+  }
+  .abs {
+    position: relative;
+    /* display: none; */
+    /* width: 50%;
+    height: 50%; */
     right: 0;
     top: 0;
   }

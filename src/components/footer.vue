@@ -10,7 +10,7 @@
           />
         </div>
 
-        <div
+        <!-- <div
           class="col-lg-6"
           style="display:flex;justify-content:center;align-items:center;margin-top:10px"
         >
@@ -20,7 +20,7 @@
             <li class="ml-3 footer_link ">Become An Agent</li>
             <li class="ml-3 footer_link ">Contact Us</li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
   </footer>

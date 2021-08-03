@@ -138,14 +138,26 @@
                       >Contact Person</label
                     >
                     <input
-                      type="password"
+                      type="text"
                       class="form-control"
                       id="formGroupExampleInput"
                       placeholder=""
                       v-model="form.contactPersonName"
                     />
                   </div>
-                  <div class="col-lg-12 mt-3 form-row">
+                  <div class="col-lg-6 mt-3">
+                    <label class="formlabel" for="formGroupExampleInput"
+                      >No of Terminals</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="formGroupExampleInput"
+                      placeholder=""
+                      v-model="form.noOfTerminalOnSignUp"
+                    />
+                  </div>
+                  <div class="col-lg-6 mt-3 form-row">
                     <label class="formlabel" for="formGroupExampleInput"
                       >Upload Business Logo(PNG/SVG)</label
                     >
@@ -246,7 +258,7 @@
                       >Address Line 1</label
                     >
                     <input
-                      type="password"
+                      type="text"
                       class="form-control"
                       id="formGroupExampleInput"
                       placeholder=""
@@ -259,7 +271,7 @@
                       >Address Line 2</label
                     >
                     <input
-                      type="password"
+                      type="text"
                       class="form-control"
                       id="formGroupExampleInput"
                       placeholder=""
@@ -321,7 +333,7 @@ export default {
         logoUrl: "",
 
         bvn: "",
-
+        noOfTerminalOnSignUp: "",
         addressLine1: "",
         addressLine2: "",
         state: "",
@@ -368,6 +380,7 @@ export default {
       this.form.logoUrl = "";
       this.form.addressLine1;
       this.form.contactPersonName = "";
+      this.form.noOfTerminalOnSignUp = "";
     },
     async submitForm() {
       try {
@@ -377,6 +390,22 @@ export default {
           // "uniqueParameter" : this.email,
           // "password": this.password
           this.form
+          // {
+          //   addressLine1: "no 17 Kado Binko",
+          //   addressLine2: "",
+          //   agentName: "Babatope Oke",
+          //   bvn: "22222222223",
+          //   city: "FCT Abuja",
+          //   contactPersonName: "Babatope Oke",
+          //   emailAddress: "babatope.oke@bizzdeskgroup.com",
+          //   lga: "AMAC",
+          //   logoUrl: "",
+          //   password: "1234567890",
+          //   phoneNumber: "08064518152",
+          //   state: "FCT Abuja",
+          //   transactionPin: "1234",
+          //   username: "babatope",
+          // }
         );
         if (user.data.responseCode === 0) {
           // const currentUser = JSON.parse(user.data.data)
