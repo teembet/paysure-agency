@@ -22,34 +22,46 @@
           class="col-lg-7 d-flex justify-content-center align-items-center  "
           style="overflow:auto;height:100vh"
         >
-        <form @submit.prevent="submitForm">
+          <form @submit.prevent="submitForm">
+            <div class="container">
+              <div class="success-container d-flex flex-column">
+                <span class="icon"><i class="fas fa-check"></i></span>
+                <h2 class="col-lg-8 mt-4 text-center" style="color:#5323D7">
+                  Verify your account
+                </h2>
+                <p class="col-lg-8 mt-4" style="text-align:center;">
+                  A 6-digit code has been sent to your email. Enter to verify
+                  your account.
+                </p>
 
-       
-          <div class="container">
-               <div class="success-container d-flex flex-column">
-              <span class="icon"><i class="fas fa-check"></i></span>
-              <h2 class="col-lg-8 mt-4 text-center" style="color:#5323D7">
-                Please Input Token
-              </h2>
-           
-<div class="pin-code mt-5" id="pincode" v-on="handlers">
-  <input type="number" maxlength="1" autofocus  v-model="first"> 
-  <input type="number" maxlength="1"  v-model="second" >
-  <input type="number" maxlength="1"  v-model="third">
-  <input type="number" maxlength="1" v-model="fourth">
-  <input type="number" maxlength="1"  v-model="fifth">
-  <input type="number" maxlength="1" v-model="sixth" >
-</div>
-    </div>
-        
-              <button class="btn-login center col-lg-6 mt-5"  type="submit">Submit</button>
+                <div class="pin-code mt-5" id="pincode" v-on="handlers">
+                  <input
+                    type="number"
+                    maxlength="1"
+                    autofocus
+                    v-model="first"
+                  />
+                  <input type="number" maxlength="1" v-model="second" />
+                  <input type="number" maxlength="1" v-model="third" />
+                  <input type="number" maxlength="1" v-model="fourth" />
+                  <input type="number" maxlength="1" v-model="fifth" />
+                  <input type="number" maxlength="1" v-model="sixth" />
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <router-link
+                  to="/verifysuccess"
+                  class="btn-login col-lg-6 mt-5"
+                  tag="button"
+                  >Submit</router-link
+                >
+              </div>
             </div>
-             </form>
-         </div>
+          </form>
         </div>
       </div>
     </div>
-  
+  </div>
 </template>
 
 <script>
@@ -59,83 +71,78 @@ export default {
   components: {
     Loader,
   },
-  data(){
+  data() {
     const vm = this;
-    return{
-      loader:false,
-       handlers: {
-      keyup: vm.keyUp,
-      keydown: vm.keyDown
-    },
-    first:'',
-    second:'',
-    third:'',
-    fourth:'',
-    fifth:'',
-    sixth:''
-
-
-    }
+    return {
+      loader: false,
+      handlers: {
+        keyup: vm.keyUp,
+        keydown: vm.keyDown,
+      },
+      first: "",
+      second: "",
+      third: "",
+      fourth: "",
+      fifth: "",
+      sixth: "",
+    };
   },
 
-  methods:{
-    keyUp(event){
+  methods: {
+    keyUp(event) {
       // var pinContainer = document.getElementById('pincode').getElementsByTagName('Input');
-//  var pinContainer = document.querySelector(".pin-code");
+      //  var pinContainer = document.querySelector(".pin-code");
 
+      const target = event.srcElement;
 
+      var maxLength = parseInt(target.attributes["maxlength"].value, 10);
+      var myLength = target.value.length;
 
-    const target = event.srcElement;
-    
-    var maxLength = parseInt(target.attributes["maxlength"].value, 10);
-    var myLength = target.value.length;
-
-    if (myLength >= maxLength) {
+      if (myLength >= maxLength) {
         let next = target;
-     
-        while ((next = next.nextElementSibling)) {
-         
-            if (next === null)break;     
-            if (next.tagName.toLowerCase() == "input") {
-             
-                next.focus();
-                break;
-            }
-        }
-      
-    }
 
-    if (myLength === 0) {
-  
+        while ((next = next.nextElementSibling)) {
+          if (next === null) break;
+          if (next.tagName.toLowerCase() == "input") {
+            next.focus();
+            break;
+          }
+        }
+      }
+
+      if (myLength === 0) {
         var next = target;
         while ((next = next.previousElementSibling)) {
-            if (next === null) break;
-            if (next.tagName.toLowerCase() == "input") {
-                next.focus();
-                break;
-            }
+          if (next === null) break;
+          if (next.tagName.toLowerCase() == "input") {
+            next.focus();
+            break;
+          }
         }
-    }
-
-
+      }
     },
-    keyDown(event){
-     
-     var target = event.srcElement;
-    
-    target.value = "";
+    keyDown(event) {
+      var target = event.srcElement;
+
+      target.value = "";
     },
-   
-async submitForm(){
-  const formInput = this.first + this.second + this.third + this.fourth + this.fifth + this.sixth
-  console.log(formInput,"formInput");
-    this.$router.push('/verifyemail')
-       try {
+
+    async submitForm() {
+      const formInput =
+        this.first +
+        this.second +
+        this.third +
+        this.fourth +
+        this.fifth +
+        this.sixth;
+      console.log(formInput, "formInput");
+      this.$router.push("/verifyemail");
+      try {
         this.loader = true;
         const user = await this.axios.post(
           "http://52.149.222.131:5009/api/v1/users/register/agent",
-       
-        formInput
+
+          formInput
         );
         if (user.data.responseCode === 0) {
           // const currentUser = JSON.parse(user.data.data)
@@ -151,8 +158,7 @@ async submitForm(){
             position: "top-right",
           });
         }
-     } 
-      catch (e) {
+      } catch (e) {
         this.loader = false;
         this.$toast.open({
           message: `<p style="color:white;">${e}</p>`,
@@ -163,50 +169,39 @@ async submitForm(){
         });
         console.log(e);
       }
-}
-  }
-
-}
-
-
-
-
-  
-
+    },
+  },
+};
 </script>
 
-
 <style scoped>
-.pin-code{ 
-  padding: 0; 
-  margin: 0 auto; 
+.pin-code {
+  padding: 0;
+  margin: 0 auto;
   display: flex;
-  justify-content:center;
-  
-} 
- 
-.pin-code input { 
-  border: none; 
-  text-align: center; 
+  justify-content: center;
+}
+
+.pin-code input {
+  border: none;
+  text-align: center;
   width: 48px;
-  height:48px;
-  font-size: 36px; 
-  background-color: #F3F3F3;
-  margin-right:5px;
-} 
+  height: 48px;
+  font-size: 36px;
+  background-color: #f3f3f3;
+  margin-right: 5px;
+  color: #5323d7;
+}
 
-
-
-.pin-code input:focus { 
-  border: 1px solid #573D8B;
-  outline:none;
-} 
-
+.pin-code input:focus {
+  border: 1px solid #573d8b;
+  outline: none;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>
 <style scoped>

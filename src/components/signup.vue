@@ -19,289 +19,296 @@
           </div>
         </div>
         <div class="col-lg-7 " style="overflow:auto;height:100vh">
-          <div class="first-page page" v-if="firstPage">
-            <div class="container resize">
-              <form @submit.prevent="checkFirstPage()">
-                <h1 class="title">Get Started Becoming An Agent!</h1>
-                <h4 class="mt-3 title-2">
-                  Let's get you started creating a new agent account
-                </h4>
-                <div class="form-row mt-5">
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Full Name</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="formGroupExampleInput"
-                      placeholder=""
-                      v-model="form.agentName"
-                      required
-                    />
-                  </div>
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Prefered Username</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="formGroupExampleInput"
-                      placeholder=""
-                      v-model="form.username"
-                      required
-                    />
-                  </div>
-
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Phone Number</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder=""
-                      v-model="form.phoneNumber"
-                      required
-                    />
-                  </div>
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Email</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder=""
-                      v-model="form.emailAddress"
-                      required
-                    />
-                  </div>
-
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Password</label
-                    >
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="formGroupExampleInput"
-                      placeholder=""
-                      v-model="form.password"
-                      required
-                    />
-                  </div>
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Confirm Password</label
-                    >
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="formGroupExampleInput"
-                      placeholder=""
-                      v-model="confirmPassword"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="center" style="margin-top:5.5rem">
-                  <button class="btn-login col-lg-6" type="submit">
-                    Proceed
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <!--second page-->
-          <transition name="slide-fade">
-
-          
-          <div class="second-page page" v-if="secondPage">
-            <div class="container resize">
-              <form @submit.prevent="submitForm">
-                <h1 class="title">Provide Your Business Details</h1>
-
-                <div class="form-row mt-5">
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Transaction Pin</label
-                    >
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="formGroupExampleInput"
-                      placeholder=""
-                      v-model="form.transactionPin"
-                    />
-                  </div>
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Contact Person</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="formGroupExampleInput"
-                      placeholder=""
-                      v-model="form.contactPersonName"
-                    />
-                  </div>
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >No of Terminals</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="formGroupExampleInput"
-                      placeholder=""
-                      v-model="form.noOfTerminalOnSignUp"
-                    />
-                  </div>
-                  <div class="col-lg-6 mt-3 form-row">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Upload Business Logo(PNG/SVG)</label
-                    >
-                    <div class="input-group mb-3">
-                      <span class="btn attach" id="button-addon2">
-                        <i class="fas fa-paperclip" style="color:#23A6D7"></i>
-                      </span>
-                      <input
-                        type="file"
-                        @change="selectFile"
-                        multiple
-                        class="form-control"
-                        placeholder="Browse files or drag and drop here"
-                        aria-label="Browse files or drag and drop here"
-                        aria-describedby="button-addon2"
-                        style="border-left:none !important;border-color:#F2F3F3;"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-lg-12 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Enter your Bank Verification Number</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="formGroupExampleInput"
-                      placeholder="Enter Bvn"
-                      v-model="form.bvn"
-                      required
-                    />
-                  </div>
-
-                  <div class="form-info col-lg-12">
-                    <p class="primary-text mt-1">Why we need your Bvn</p>
-                    <p class="mt-1" style="color:#B9B9B9">
-                      We only need access to
-                    </p>
-                    <ul class="mt-3" style="display:flex;flex-direction:column">
-                      <li><i class="fa fa-check"></i> &nbsp;Full Name</li>
-                      <li><i class="fa fa-check"></i>&nbsp;Phone Number</li>
-                      <li><i class="fa fa-check"></i>&nbsp;Date of Birth</li>
-                    </ul>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="col-lg-4 mt-3">
+          <transition name="fade" v-if="firstPage">
+            <div class="first-page page">
+              <div class="container resize">
+                <form @submit.prevent="checkFirstPage()">
+                  <h1 class="title">Get Started Becoming An Agent!</h1>
+                  <h4 class="mt-3 title-2">
+                    Let's get you started creating a new agent account
+                  </h4>
+                  <div class="form-row mt-5">
+                    <div class="col-lg-6 mt-3">
                       <label class="formlabel" for="formGroupExampleInput"
-                        >State</label
-                      >
-                      <select
-                        v-model="form.state"
-                        class="form-control"
-                        @change="onStateChange($event)"
-                        required
-                      >
-                        <option disabled selected>Select State</option>
-                        <option
-                          v-for="(item, index) in states"
-                          :key="index"
-                          :value="item"
-                        >
-                          {{ item }}</option
-                        >
-                      </select>
-                    </div>
-                    <div class="col-lg-4 mt-3">
-                      <label class="formlabel" for="formGroupExampleInput"
-                        >LGA</label
-                      >
-                      <select v-model="form.lga" class="form-control" required>
-                        <option disabled selected>Select LGA</option>
-                        <option
-                          v-for="(item, index) in lgas"
-                          :key="index"
-                          :value="item"
-                        >
-                          {{ item }}</option
-                        >
-                      </select>
-                    </div>
-                    <div class="col-lg-4 mt-3">
-                      <label class="formlabel" for="formGroupExampleInput"
-                        >City</label
+                        >Full Name</label
                       >
                       <input
                         type="text"
                         class="form-control"
                         id="formGroupExampleInput"
                         placeholder=""
-                        v-model="form.city"
+                        v-model="form.agentName"
+                        required
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Prefered Username</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.username"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Phone Number</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder=""
+                        v-model="form.phoneNumber"
+                        required
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Email</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder=""
+                        v-model="form.emailAddress"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.password"
+                        required
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Confirm Password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="confirmPassword"
                         required
                       />
                     </div>
                   </div>
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Address Line 1</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="formGroupExampleInput"
-                      placeholder=""
-                      v-model="form.addressLine1"
-                      required
-                    />
-                  </div>
-                  <div class="col-lg-6 mt-3">
-                    <label class="formlabel" for="formGroupExampleInput"
-                      >Address Line 2</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="formGroupExampleInput"
-                      placeholder=""
-                      v-model="form.addressLine2"
-                    />
-                  </div>
-                </div>
-
-                <div
-                  class="col-lg-12 row mt-4"
-                  style="display:flex;justify-content:center;"
-                >
-                  <div class="col-lg-6 mt-5">
-                    <button class="btn-prev col-lg-6" @click="prev">
-                      <i class="fa fa-arrow-left"></i> Go Back
-                    </button>
-                  </div>
-
-                  <div class="col-lg-6 mt-5">
+                  <div class="center" style="margin-top:5.5rem">
                     <button class="btn-login col-lg-6" type="submit">
-                      Submit
+                      Proceed
                     </button>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
-          </div>
+          </transition>
+          <!--second page-->
+          <transition name="slide-fade" v-if="secondPage">
+            <div class="second-page page">
+              <div class="container resize">
+                <form @submit.prevent="submitForm">
+                  <h1 class="title">Provide Your Business Details</h1>
+
+                  <div class="form-row mt-5">
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Transaction Pin</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.transactionPin"
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Contact Person</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.contactPersonName"
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >No of Terminals</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.noOfTerminalOnSignUp"
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3 form-row">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Upload Business Logo(PNG/SVG)</label
+                      >
+                      <div class="input-group mb-3">
+                        <span class="btn attach" id="button-addon2">
+                          <i class="fas fa-paperclip" style="color:#23A6D7"></i>
+                        </span>
+                        <input
+                          type="file"
+                          @change="selectFile"
+                          multiple
+                          class="form-control"
+                          placeholder="Browse files or drag and drop here"
+                          aria-label="Browse files or drag and drop here"
+                          aria-describedby="button-addon2"
+                          style="border-left:none !important;border-color:#F2F3F3;"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-12 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Enter your Bank Verification Number</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder="Enter Bvn"
+                        v-model="form.bvn"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-info col-lg-12">
+                      <p class="primary-text mt-1">Why we need your Bvn</p>
+                      <p class="mt-1" style="color:#B9B9B9">
+                        We only need access to
+                      </p>
+                      <ul
+                        class="mt-3"
+                        style="display:flex;flex-direction:column"
+                      >
+                        <li><i class="fa fa-check"></i> &nbsp;Full Name</li>
+                        <li><i class="fa fa-check"></i>&nbsp;Phone Number</li>
+                        <li><i class="fa fa-check"></i>&nbsp;Date of Birth</li>
+                      </ul>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="col-lg-4 mt-3">
+                        <label class="formlabel" for="formGroupExampleInput"
+                          >State</label
+                        >
+                        <select
+                          v-model="form.state"
+                          class="form-control"
+                          @change="onStateChange($event)"
+                          required
+                        >
+                          <option disabled selected>Select State</option>
+                          <option
+                            v-for="(item, index) in states"
+                            :key="index"
+                            :value="item"
+                          >
+                            {{ item }}</option
+                          >
+                        </select>
+                      </div>
+                      <div class="col-lg-4 mt-3">
+                        <label class="formlabel" for="formGroupExampleInput"
+                          >LGA</label
+                        >
+                        <select
+                          v-model="form.lga"
+                          class="form-control"
+                          required
+                        >
+                          <option disabled selected>Select LGA</option>
+                          <option
+                            v-for="(item, index) in lgas"
+                            :key="index"
+                            :value="item"
+                          >
+                            {{ item }}</option
+                          >
+                        </select>
+                      </div>
+                      <div class="col-lg-4 mt-3">
+                        <label class="formlabel" for="formGroupExampleInput"
+                          >City</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="formGroupExampleInput"
+                          placeholder=""
+                          v-model="form.city"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Address Line 1</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.addressLine1"
+                        required
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Address Line 2</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.addressLine2"
+                      />
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-12 row mt-4"
+                    style="display:flex;justify-content:center;"
+                  >
+                    <div class="col-lg-6 mt-5">
+                      <button class="btn-prev col-lg-6" @click="prev">
+                        <i class="fa fa-arrow-left"></i> Go Back
+                      </button>
+                    </div>
+
+                    <div class="col-lg-6 mt-5">
+                      <button class="btn-login col-lg-6" type="submit">
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
           </transition>
         </div>
       </div>
@@ -323,8 +330,8 @@ export default {
       lgas: [],
       loader: false,
       firstPage: Boolean,
-      secondPage: Boolean,
-      lastPage: Boolean,
+      secondPage: false,
+
       confirmPassword: "",
       form: {
         username: "",
@@ -350,15 +357,13 @@ export default {
     email: String,
   },
   methods: {
-   async checkFirstPage() {
-      
-      
-        this.loader=true;
-     const delay = ms => new Promise(res => setTimeout(res, ms));
-  await delay(5000)
-console.log("tim");
+    async checkFirstPage() {
+      this.loader = true;
+      const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+      await delay(5000);
+      console.log("tim");
       if (this.form.password !== this.confirmPassword) {
-        this.loader=false
+        this.loader = false;
         this.secondPage = false;
         this.firstPage = true;
         console.log("true");
@@ -369,9 +374,9 @@ console.log("tim");
           dismissible: true,
           position: "top-right",
         });
-        return
+        return;
       } else {
-        this.loader=false
+        this.loader = false;
         this.next();
       }
     },
@@ -394,57 +399,56 @@ console.log("tim");
       this.form.noOfTerminalOnSignUp = "";
     },
     async submitForm() {
-      this.$router.push('/verifyemail')
-      // try {
+      this.$router.push("/verifyemail");
+      try {
         this.loader = true;
-        // const user = await this.axios.post(
-        //   "http://52.149.222.131:5009/api/v1/users/register/agent",
-        //   // "uniqueParameter" : this.email,
-        //   // "password": this.password
-        //   this.form
-        //   // {
-        //   //   addressLine1: "no 17 Kado Binko",
-        //   //   addressLine2: "",
-        //   //   agentName: "Babatope Oke",
-        //   //   bvn: "22222222223",
-        //   //   city: "FCT Abuja",
-        //   //   contactPersonName: "Babatope Oke",
-        //   //   emailAddress: "babatope.oke@bizzdeskgroup.com",
-        //   //   lga: "AMAC",
-        //   //   logoUrl: "",
-        //   //   password: "1234567890",
-        //   //   phoneNumber: "08064518152",
-        //   //   state: "FCT Abuja",
-        //   //   transactionPin: "1234",
-        //   //   username: "babatope",
-        //   // }
-        // );
-        // if (user.data.responseCode === 0) {
-        //   // const currentUser = JSON.parse(user.data.data)
-        //   this.loader = false;
-        //   this.form;
-        // } else {
-        //   this.loader = false;
-        //   this.$toast.open({
-        //     message: `<p style="color:white;">${user.data.responseMessage}</p>`,
-        //     type: "error",
-        //     duration: 5000,
-        //     dismissible: true,
-        //     position: "top-right",
-        //   });
-        // }
-    //  } 
-      // catch (e) {
-      //   this.loader = false;
-      //   this.$toast.open({
-      //     message: `<p style="color:white;">${e}</p>`,
-      //     type: "error",
-      //     duration: 5000,
-      //     dismissible: true,
-      //     position: "top-right",
-      //   });
-      //   console.log(e);
-      // }
+        const user = await this.axios.post(
+          "http://52.149.222.131:5009/api/v1/users/register/agent",
+          // "uniqueParameter" : this.email,
+          // "password": this.password
+          this.form
+          // {
+          //   addressLine1: "no 17 Kado Binko",
+          //   addressLine2: "",
+          //   agentName: "Babatope Oke",
+          //   bvn: "22222222223",
+          //   city: "FCT Abuja",
+          //   contactPersonName: "Babatope Oke",
+          //   emailAddress: "babatope.oke@bizzdeskgroup.com",
+          //   lga: "AMAC",
+          //   logoUrl: "",
+          //   password: "1234567890",
+          //   phoneNumber: "08064518152",
+          //   state: "FCT Abuja",
+          //   transactionPin: "1234",
+          //   username: "babatope",
+          // }
+        );
+        if (user.data.responseCode === 0) {
+          // const currentUser = JSON.parse(user.data.data)
+          this.loader = false;
+          this.form;
+        } else {
+          this.loader = false;
+          this.$toast.open({
+            message: `<p style="color:white;">${user.data.responseMessage}</p>`,
+            type: "error",
+            duration: 5000,
+            dismissible: true,
+            position: "top-right",
+          });
+        }
+      } catch (e) {
+        this.loader = false;
+        this.$toast.open({
+          message: `<p style="color:white;">${e}</p>`,
+          type: "error",
+          duration: 5000,
+          dismissible: true,
+          position: "top-right",
+        });
+        console.log(e);
+      }
     },
     selectFile(event) {
       console.log("here");
@@ -524,7 +528,7 @@ console.log("tim");
   mounted() {
     this.firstPage = true;
     this.secondPage = false;
-    this.lastPage = false;
+
     this.states = NaijaStates.states();
     console.log(process.env.BASE_URL, "baseurl");
   },
@@ -536,15 +540,16 @@ console.log("tim");
   transition: all 1s ease;
 }
 .slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

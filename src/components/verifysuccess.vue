@@ -26,15 +26,12 @@
             <div class="success-container d-flex flex-column">
               <span class="icon"><i class="fas fa-check"></i></span>
               <h2 class="col-lg-8 mt-4 text-center" style="color:#5323D7">
-                Agent Registration Complete
+                Verification Successful
               </h2>
               <p class="col-lg-8 mt-4" style="text-align:center;">
-                Click continue to verify your account
+                Proceed to home page
               </p>
-              <router-link
-                to="/verifysuccess"
-                class="btn-login col-lg-6 mt-5"
-                tag="button"
+              <router-link to="/" class="btn-login col-lg-6 mt-5" tag="button"
                 >Continue</router-link
               >
             </div>
@@ -44,11 +41,10 @@
     </div>
   </div>
 </template>
-
 <script>
 import Loader from "@/components/loader.vue";
 export default {
-  name: "Verifyemail",
+  //   name: "Verifyemail",
   components: {
     Loader,
   },
