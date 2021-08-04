@@ -20,14 +20,14 @@ import "vue-toast-notification/dist/theme-sugar.css";
 Vue.config.productionTip = false;
 Vue.use(anime,VueRouter, $, Popper, VueCarousel, NaijaStates, axios, VueToast);
 // Vue.prototype.$toast = VueToast;
-// let instance = Vue.$toast.open("You did it!");
+//  let instance = Vue.$toast.open("You did it!");
 
-// // Force dismiss specific toast
+// // // Force dismiss specific toast
 // instance.dismiss();
-// // Dismiss all opened toast immediately
-// Vue.$toast.clear();
+// // // Dismiss all opened toast immediately
+//  Vue.$toast.clear();
 Vue.prototype.axios = axios;
-Vue.prototype.$anime=anime;
+
 
 new Vue({
   router,

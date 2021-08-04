@@ -115,6 +115,9 @@
             </div>
           </div>
           <!--second page-->
+          <transition name="slide-fade">
+
+          
           <div class="second-page page" v-if="secondPage">
             <div class="container resize">
               <form @submit.prevent="submitForm">
@@ -299,6 +302,7 @@
               </form>
             </div>
           </div>
+          </transition>
         </div>
       </div>
     </div>
@@ -346,9 +350,13 @@ export default {
     email: String,
   },
   methods: {
-    checkFirstPage() {
-      console.log("tim");
-this.loader=true;
+   async checkFirstPage() {
+      
+      
+        this.loader=true;
+     const delay = ms => new Promise(res => setTimeout(res, ms));
+  await delay(5000)
+console.log("tim");
       if (this.form.password !== this.confirmPassword) {
         this.loader=false
         this.secondPage = false;
@@ -524,6 +532,23 @@ this.loader=true;
 </script>
 
 <style>
+.slide-fade-enter-active {
+  transition: all 1s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 .login-block {
   height: auto;
   position: fixed;

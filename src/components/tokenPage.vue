@@ -22,39 +22,29 @@
           class="col-lg-7 d-flex justify-content-center align-items-center  "
           style="overflow:auto;height:100vh"
         >
+        <form @submit.prevent="submitForm">
+
+       
           <div class="container">
                <div class="success-container d-flex flex-column">
               <span class="icon"><i class="fas fa-check"></i></span>
               <h2 class="col-lg-8 mt-4 text-center" style="color:#5323D7">
                 Please Input Token
               </h2>
-              <main> 
-          <div class="pin-wrapper">
-        <div class="digits">
-            <input type="text" @change="change" class="focus">
-            <span class="digit" @change="change" data-digit=""></span>
-            <span class="digit" @change="change" data-digit=""></span>
-            <span class="digit" @change="change" data-digit=""></span>
-            <span class="digit" @change="change" data-digit=""></span>
-            <div class="caret"></div>
-        </div>
-          </div>
-
-        <button class="submit">
-            <svg width="113" height="96" viewBox="0 0 113 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M113 48L65.4099 0L55.852 9.55112L87.568 41.2462H0V54.7538H87.568L55.8531 86.4485L65.411 96L113 48Z" />
-            </svg>
-        </button>
-
-        <div class="result">
-            <span>Success! Your code is <span class="result-pin"></span>.</span><br>
-            <button class="reset">Reset</button>
-        </div>
-              </main> 
+           
+<div class="pin-code mt-5" id="pincode" v-on="handlers">
+  <input type="number" maxlength="1" autofocus  v-model="first"> 
+  <input type="number" maxlength="1"  v-model="second" >
+  <input type="number" maxlength="1"  v-model="third">
+  <input type="number" maxlength="1" v-model="fourth">
+  <input type="number" maxlength="1"  v-model="fifth">
+  <input type="number" maxlength="1" v-model="sixth" >
+</div>
     </div>
         
-              <router-link to="/tokenpage" class="btn-login col-lg-6 mt-5" tag="button">Continue</router-link>
+              <button class="btn-login center col-lg-6 mt-5"  type="submit">Submit</button>
             </div>
+             </form>
          </div>
         </div>
       </div>
@@ -70,11 +60,111 @@ export default {
     Loader,
   },
   data(){
+    const vm = this;
     return{
       loader:false,
+       handlers: {
+      keyup: vm.keyUp,
+      keydown: vm.keyDown
+    },
+    first:'',
+    second:'',
+    third:'',
+    fourth:'',
+    fifth:'',
+    sixth:''
+
 
     }
   },
+
+  methods:{
+    keyUp(event){
+      // var pinContainer = document.getElementById('pincode').getElementsByTagName('Input');
+//  var pinContainer = document.querySelector(".pin-code");
+
+
+
+    const target = event.srcElement;
+    
+    var maxLength = parseInt(target.attributes["maxlength"].value, 10);
+    var myLength = target.value.length;
+
+    if (myLength >= maxLength) {
+        let next = target;
+     
+        while ((next = next.nextElementSibling)) {
+         
+            if (next === null)break;     
+            if (next.tagName.toLowerCase() == "input") {
+             
+                next.focus();
+                break;
+            }
+        }
+      
+    }
+
+    if (myLength === 0) {
+  
+        var next = target;
+        while ((next = next.previousElementSibling)) {
+            if (next === null) break;
+            if (next.tagName.toLowerCase() == "input") {
+                next.focus();
+                break;
+            }
+        }
+    }
+
+
+    },
+    keyDown(event){
+     
+     var target = event.srcElement;
+    
+    target.value = "";
+    },
+   
+async submitForm(){
+  const formInput = this.first + this.second + this.third + this.fourth + this.fifth + this.sixth
+  console.log(formInput,"formInput");
+    this.$router.push('/verifyemail')
+       try {
+        this.loader = true;
+        const user = await this.axios.post(
+          "http://52.149.222.131:5009/api/v1/users/register/agent",
+       
+        formInput
+        );
+        if (user.data.responseCode === 0) {
+          // const currentUser = JSON.parse(user.data.data)
+          this.loader = false;
+          this.form;
+        } else {
+          this.loader = false;
+          this.$toast.open({
+            message: `<p style="color:white;">${user.data.responseMessage}</p>`,
+            type: "error",
+            duration: 5000,
+            dismissible: true,
+            position: "top-right",
+          });
+        }
+     } 
+      catch (e) {
+        this.loader = false;
+        this.$toast.open({
+          message: `<p style="color:white;">${e}</p>`,
+          type: "error",
+          duration: 5000,
+          dismissible: true,
+          position: "top-right",
+        });
+        console.log(e);
+      }
+}
+  }
 
 }
 
@@ -87,179 +177,37 @@ export default {
 
 
 <style scoped>
-body {
-  background: #FEE8E8;
-}
-@-webkit-keyframes blink {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-@keyframes blink {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-* {
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-}
-main {
-  transition-duration: 0.6s;
-}
-main .pin-wrapper {
-  font-weight: 600;
-  color: #F05A5D;
-  align-items: center;
-  background: #FFFEFE;
-  font-size: 1.7em;
-  line-height: 1;
-  position: relative;
-}
-main .pin-wrapper .digits {
-  overflow: hidden;
+.pin-code{ 
+  padding: 0; 
+  margin: 0 auto; 
   display: flex;
-  justify-content: space-between;
-  position: relative;
-  height: 1em;
-  padding: 40px 45px;
-  width: 280px;
-}
-main .pin-wrapper .digits .digit {
-  position: relative;
-  display: block;
-  min-height: 1rem;
-  min-width: 1rem;
-}
-main .pin-wrapper .digits .digit::before {
-  content: attr(data-digit);
-  display: block;
-  opacity: 0;
-  transform: scale(0.6);
-  transition-duration: 0.2s;
-  transition-delay: 0.15s;
-  margin-top: -1px;
-}
-main .pin-wrapper .digits .digit[data-digit=""]::after {
-  content: '';
-  position: absolute;
-  width: 4px;
-  height: 28px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #FEE8E8;
-}
-main .pin-wrapper .digits .digit.shown::before {
-  opacity: 1;
-  transform: scale(1);
-  transition-duration: 0.45s;
-}
-main .pin-wrapper .digits .caret {
-  position: absolute;
-  width: 0;
-  height: 28px;
-  background: #F05A5D;
-  left: 0;
-}
-main .pin-wrapper .submit {
-  position: absolute;
-  background: #F05A5D;
-  top: 0;
-  left: 100%;
-  height: 100%;
-  width: calc(1rem + 90px);
-  border: none;
-  z-index: -1;
-  transform: translateX(-100%);
-  transition-duration: 0.6s;
-}
-main .pin-wrapper .submit svg {
-  width: 40px;
-  position: absolute;
-  top: 50%;
-  transform: translate(-25%, -50%);
-  opacity: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  fill: white;
-  transition-duration: 0.6s;
-  transition-delay: 0.25s;
-}
-main .pin-wrapper .result {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  color: white;
-  background: #F05A5D;
-  font-weight: 300;
-  font-size: 1.1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 25px 30px;
-  box-sizing: border-box;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition-duration: 0.4s;
-  transition-delay: 0.2s;
-  z-index: 99;
-  flex-direction: column;
-}
-main .pin-wrapper .result .result-pin {
-  font-weight: 600;
-}
-main .pin-wrapper .result.shown {
-  opacity: 1;
-  transform: none;
-  pointer-events: all;
-  transition-delay: 0.85s;
-}
-main .pin-wrapper .result button.reset {
-  background: none;
-  border: none;
-  border-bottom: 2px solid white;
-  padding: 0 0 2px;
-  font-weight: 600;
-  font-size: 0.8em;
-  font-family: 'Roboto Mono';
-  color: white;
-  cursor: pointer;
-}
-main .focus {
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 99;
-}
-main .focus:focus ~ .caret.blink {
-  -webkit-animation: blink 0.5s infinite alternate;
-          animation: blink 0.5s infinite alternate;
-}
-main.show-button {
-  transform: translateX(calc(-0.5rem - 45px));
-}
-main.show-button .pin-wrapper .submit {
-  transform: none;
-}
-main.show-button .pin-wrapper .submit svg {
-  transform: translateY(-50%);
-  opacity: 1;
-}
+  justify-content:center;
+  
+} 
+ 
+.pin-code input { 
+  border: none; 
+  text-align: center; 
+  width: 48px;
+  height:48px;
+  font-size: 36px; 
+  background-color: #F3F3F3;
+  margin-right:5px;
+} 
 
+
+
+.pin-code input:focus { 
+  border: 1px solid #573D8B;
+  outline:none;
+} 
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 </style>
 <style scoped>
 .icon {
