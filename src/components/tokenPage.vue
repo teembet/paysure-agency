@@ -14,7 +14,7 @@
             data-ride="carousel"
           >
             <carousel :autoplay="true" :nav="true" :items="1">
-              <img src="../assets/caro1.png" style="height:100vh !important" />
+              <img src="../assets/pic.png" style="height:100vh !important" />
             </carousel>
           </div>
         </div>
@@ -49,11 +49,11 @@
                 </div>
               </div>
               <div class="d-flex justify-content-center">
-                <router-link
+                <button
                   to="/verifysuccess"
                   class="btn-login col-lg-6 mt-5"
-                  tag="button"
-                  >Submit</router-link
+                  type="submit"
+                  >Submit</button
                 >
               </div>
             </div>
@@ -136,22 +136,36 @@ export default {
         this.fifth +
         this.sixth;
       console.log(formInput, "formInput");
-      this.$router.push("/verifyemail");
+      
       try {
         this.loader = true;
         const user = await this.axios.post(
-          "http://52.149.222.131:5009/api/v1/users/register/agent",
-
-          formInput
+          `http://52.149.222.131:5009/api/v1//users/verifycode/${formInput}`, 
         );
-        if (user.data.responseCode === 0) {
+        if (user.data.data.responseCode === 0) {
+         
+           this.first= "";
+      this.second= "";
+      this.third= "";
+      this.fourth= "";
+      this.fifth= "";
+      this.sixth="";
+      
+           this.$toast.open({
+            message: `<p style="color:white;">${user.data.data.responseMessage}</p>`,
+            type: "success",
+            duration: 5000,
+            dismissible: true,
+            position: "top-right",
+          });
+           this.$router.push("/verifysuccess");
           // const currentUser = JSON.parse(user.data.data)
           this.loader = false;
-          this.form;
+       
         } else {
           this.loader = false;
           this.$toast.open({
-            message: `<p style="color:white;">${user.data.responseMessage}</p>`,
+            message: `<p style="color:white;">${user.data.data.responseMessage}</p>`,
             type: "error",
             duration: 5000,
             dismissible: true,

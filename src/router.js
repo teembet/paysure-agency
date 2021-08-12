@@ -5,9 +5,16 @@ import Verifyemail from "@/components/verifyemail";
 import signup from "@/components/signup";
 import TokenPage from "@/components/tokenPage";
 import Verifysuccess from "@/components/verifysuccess";
+import {store} from "./store"
 Vue.use(Router);
 export default new Router({
   routes: [
+    {
+      path: "/",
+      redirect: {
+          name: "home"
+      }
+  },
     {
       path: "/signUp",
       name: "SignUp",
@@ -23,16 +30,37 @@ export default new Router({
       path: "/verifyemail",
       name: "verifyemail",
       component: Verifyemail,
+      beforeEnter: (to, from, next) => {
+        if(store.state.authenticated == false) {
+            next({ name: 'home' });
+        } else {
+            next();
+        }
+    }
     },
     {
       path: "/verifysuccess",
       name: "verifysuccess",
       component: Verifysuccess,
+      beforeEnter: (to, from, next) => {
+        if(store.state.authenticated == false) {
+          next({ name: 'home' });
+        } else {
+            next();
+        }
+    }
     },
     {
       path: "/tokenpage",
       name: "tokenpage",
       component: TokenPage,
+      beforeEnter: (to, from, next) => {
+        if(store.state.authenticated == false) {
+          next({ name: 'home' });
+        } else {
+            next();
+        }
+    }
     },
 
     // {

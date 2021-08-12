@@ -14,7 +14,7 @@
             data-ride="carousel"
           >
             <carousel :autoplay="true" :nav="true" :items="1">
-              <img src="../assets/caro1.png" style="height:100vh !important" />
+              <img src="../assets/pic.png" style="height:100vh !important" />
             </carousel>
           </div>
         </div>
@@ -32,7 +32,7 @@
                 Click continue to verify your account
               </p>
               <router-link
-                to="/verifysuccess"
+                to="/tokenpage"
                 class="btn-login col-lg-6 mt-5"
                 tag="button"
                 >Continue</router-link

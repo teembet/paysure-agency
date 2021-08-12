@@ -61,20 +61,34 @@ img {
 .primary-text {
   color: var(--primary-color);
 }
+.bold-text{
+  font-weight: 600;
+}
 button {
   border: none;
 }
 textarea:focus,
-input:focus {
+input[type="text"]:focus {
+  outline: none !important;
+  
+}
+/* input {
+  text-decoration: none;
+  outline: 1px solid var(--primary-color);
+} */
+/* select{
+  border-color: var(--primary-color);
+} */
+*:focus {
   outline: none !important;
 }
-*:focus {
-  outline: none;
-}
 .form-control:focus {
-  border-color: inherit;
+  /* border-color: inherit; */
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+input[type="text"]:focus{
+     box-shadow: 0 0 0 #6500e0;
 }
 .grey-text {
   color: #6e6e6e;

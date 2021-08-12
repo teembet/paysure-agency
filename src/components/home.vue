@@ -1,12 +1,15 @@
 <template>
-  <div class="home">
+  <div class="home" style="overflow:hidden">
     <Nav />
     <section>
-      <img class="img-fluid abs d-sm-none" src="../assets/hero.png" />
+      <div class="d-none d-lg-block">
+     <img class="img-fluid abs " src="../assets/hero.png" />
+      </div>
+ 
       <div class="container space-x">
         <div class=""></div>
         <div class="row">
-          <div class="col-lg-7 mt-5 center mb-5">
+          <div class="col-lg-6 mt-5 center mb-5">
             <div class="">
               <h1 style="color:#272D4E;font-size:60px;font-weight:700">
                 Become A Paysure Agent Today
@@ -18,6 +21,7 @@
               </p>
               <div class="btns mt-4">
                 <router-link
+                class="ml-3 mt-3"
                   to="/signUp"
                   tag="button"
                   style="border:1px solid;border-radiud:23px;background-color:#7854F7;color:#fff;padding: 15px;
@@ -27,7 +31,7 @@
                   >Get Started</router-link
                 >
                 <router-link
-                  class="ml-3"
+                  class="ml-3 mt-3"
                   style="border:1px solid #7854F7;border-radiud:23px;background-color:#fff;color:#7854F7;padding: 15px;
     width: 200px;
     border-radius: 23px;
@@ -41,12 +45,14 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-7 hero"></div>
+          <div class="col-lg-6 hero d-lg-none">
+            <img  class="img-fluid" style="width:100%" src="../assets/hero.png"  />
+          </div>
         </div>
       </div>
     </section>
     <section class="mt-4">
-      <div class="container-fluid mt-5">
+      <div class="container mt-5">
         <h2 style="text-align:center;color:#5926D7;font-size:35px">Why Us</h2>
         <div class="row mt-3">
           <div class="col-lg-4 mt-5 pt-1">
@@ -87,13 +93,13 @@
     </section>
     <section class="">
       <div class="mt-5">
-        <h3 class="center">Benefits of Becoming an agent</h3>
+        <h3 class="center heading">Benefits of Becoming an agent</h3>
         <div class="container mt-3 bkg">
           <div class="row section-head mt-5">
             <div class="col-lg-4">
               <div class="card">
                 <div class="center">
-                  <img class="img-fluid " src="../assets/45.svg" />
+                  <img class="img-fluid " src="../assets/41.svg" />
                 </div>
 
                 <h3 class="center">Sales Improvement</h3>
@@ -109,7 +115,7 @@
                   <img class="img-fluid " src="../assets/45.svg" />
                 </div>
 
-                <h3 class="center">Sales Improvement</h3>
+                <h3 class="center">Seamless Payments</h3>
                 <div class="card-body center">
                   Gain valuable tips and hacks you need to create an appealing
                   resume and navigate interview scenarios.
@@ -122,7 +128,7 @@
                   <img class="img-fluid " src="../assets/41.svg" />
                 </div>
 
-                <h3 class="center">Sales Improvement</h3>
+                <h3 class="center">Organised Dashboard</h3>
                 <div class="card-body center">
                   Gain valuable tips and hacks you need to create an appealing
                   resume and navigate interview scenarios.
@@ -136,16 +142,29 @@
 
     <section class="">
       <div class="mt-5">
-        <h3 class="center">Benefits of Becoming an agent</h3>
+        <h3 class="center heading">Requirements For Becoming A Paysure Agent</h3>
         <div class="container mt-3 bkg">
           <div class="row section-head mt-5">
+            <!-- <div class="col-lg-3">
+              <div class="card">
+                <div class="center">
+                  <img class="img-fluid " src="../assets/33.svg" />
+                </div>
+
+                <h3 class="center">Personal Details</h3>
+                <div class="card-body center">
+                  Gain valuable tips and hacks you need to create an appealing
+                  resume and navigate interview scenarios.
+                </div>
+              </div>
+            </div> -->
             <div class="col-lg-4">
               <div class="card">
                 <div class="center">
-                  <img class="img-fluid " src="../assets/41.svg" />
+                  <img class="img-fluid " src="../assets/34.svg" />
                 </div>
 
-                <h3 class="center">Sales Improvement</h3>
+                
                 <div class="card-body center">
                   Gain valuable tips and hacks you need to create an appealing
                   resume and navigate interview scenarios.
@@ -155,23 +174,23 @@
             <div class="col-lg-4">
               <div class="card">
                 <div class="center">
-                  <img class="img-fluid " src="../assets/41.svg" />
+                  <img class="img-fluid " src="../assets/35.svg" />
                 </div>
 
-                <h3 class="center">Sales Improvement</h3>
+                <!-- <h3 class="center">Government Issued ID</h3> -->
                 <div class="card-body center">
                   Gain valuable tips and hacks you need to create an appealing
                   resume and navigate interview scenarios.
                 </div>
               </div>
-            </div>
+            </div>  
             <div class="col-lg-4">
               <div class="card">
                 <div class="center">
-                  <img class="img-fluid " src="../assets/41.svg" />
+                  <img class="img-fluid " src="../assets/36.svg" />
                 </div>
 
-                <h3 class="center">Sales Improvement</h3>
+                <!-- <h3 class="center">Government Issued ID</h3> -->
                 <div class="card-body center">
                   Gain valuable tips and hacks you need to create an appealing
                   resume and navigate interview scenarios.
@@ -184,25 +203,29 @@
     </section>
     <section>
       <div class="container">
-        <div class="payments">
-          <div style="width:450px;height:50%;" class=" mt-5 pt-4 mx-5 px-4">
-            <h2 style="color:white; line-height:50px;" class="mt-5 pt-5">
-              Start Accepting Payments <br />Today!!!.
+        <div class="row payments">
+          <div class="col-lg-6">
+            <h2  class="mt-5 pt-5 white-text col-lg-12 bold-text">
+              Start Accepting Payments Today!!!.
             </h2>
-            <p style="color:white;line-height:30px;">
+            <p class="white-text mt-4 col-lg-8"> 
               Lorem Ipsum has been the industry's standard dummy text ever since
               the 1500s, when an unknown printer took.
             </p>
-            <button class="btn-home" style="width:450px">
-              Learn More
+            <button class="btn-join mt-5">
+              Join Us!!
             </button>
           </div>
-          <div class=" d-flex justify-content-end ">
+          <div class=" col-lg-6 position-relative">
             <img
-              style="width:450px; height: 50%;"
-              class="img-fluid paymt "
+              
+              class="img-fluid d-lg-none"
               src="../assets/Group 7143.png"
+              style="width:100%"
             />
+<img  class="img-fluid abs-img position-absolute d-none d-lg-block"
+              src="../assets/Group 7143.png"
+               />
           </div>
         </div>
       </div>
@@ -271,6 +294,34 @@ export default {
   right: 0;
   bottom: 0;
   top: -32rem;
+  margin-left: auto;
+margin-right: auto;
+/* left: 0;
+right: 0; */
+text-align: center;
+}
+.bold-text{
+  line-height: 50px;
+}
+.btn-join{
+  background-color: #fff;
+  color:var(--primary-color);
+  width:200px;
+  border-radius: 20px;
+  height: 50px;
+  padding: 10px 10px;
+}
+.payments{
+  padding: 20px 40px;
+}
+
+.abs-img{
+  right: 0;
+  left: 150px;
+  width: 90%;
+  top: 0;
+  bottom: 0;
+
 }
 /* #overlay {
   top: -597.968017578125px;
@@ -443,18 +494,22 @@ section {
 }
 
 .card {
-  box-shadow: 0px 3px 15px #00000024;
+  /* box-shadow: 0px 3px 15px #00000024; */
   /* filter: drop-shadow(2px 4px 6px #696969); */
   box-sizing: border-box;
   border-radius: 8px;
   border: 0 !important;
+  box-shadow: none !important;
 }
-
+.heading{
+  color: #5323d7;
+  font-size: 30px;
+}
 .card-body {
   text-align: left;
 }
 .card-hover {
-  transition: box-shadow 0.2s ease-in-out, transform 0.35s ease-in-out;
+  /* transition: box-shadow 0.2s ease-in-out, transform 0.35s ease-in-out; */
   background-color: var(--body-color);
   border: 1px solid var(--white-color) !important;
 }
@@ -497,14 +552,7 @@ section {
     right: 0;
     top: 0;
   }
-  .abs {
-    position: relative;
-    /* display: none; */
-    /* width: 50%;
-    height: 50%; */
-    right: 0;
-    top: 0;
-  }
+ 
 }
 @media screen and (max-width: 992px) {
   .image {
@@ -591,8 +639,5 @@ h3 {
 section {
   background-color: var(--body-color);
 }
-input {
-  text-decoration: none;
-  outline: 1px solid var(--primary-color);
-}
+
 </style>

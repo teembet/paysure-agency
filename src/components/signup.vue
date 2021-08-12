@@ -4,8 +4,8 @@
     <div class="login-block">
       <div class="row">
         <div class="col-lg-5">
-          <router-link to="/">
-            <img class="img-abs" src="../assets/paysure_White.png" />
+          <router-link to="/" v-if="firstPage">
+            <img class="img-abs" src="../assets/paysure_White.png"  style="cursor:pointer"/>
           </router-link>
 
           <div
@@ -14,7 +14,7 @@
             data-ride="carousel"
           >
             <carousel :autoplay="true" :nav="true" :items="1">
-              <img src="../assets/caro1.png" style="height:100vh !important" />
+              <img src="../assets/pic.png" style="height:100vh !important" />
             </carousel>
           </div>
         </div>
@@ -22,7 +22,7 @@
           <transition name="fade" v-if="firstPage">
             <div class="first-page page">
               <div class="container resize">
-                <form @submit.prevent="checkFirstPage()">
+                <form @submit.prevent="checkFirstPage()" autocomplete="off">
                   <h1 class="title">Get Started Becoming An Agent!</h1>
                   <h4 class="mt-3 title-2">
                     Let's get you started creating a new agent account
@@ -39,6 +39,7 @@
                         placeholder=""
                         v-model="form.agentName"
                         required
+                        autocomplete="off"
                       />
                     </div>
                     <div class="col-lg-6 mt-3">
@@ -52,7 +53,51 @@
                         placeholder=""
                         v-model="form.username"
                         required
+                         autocomplete="off"
                       />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Mother's Maiden Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.mmname"
+                        required
+                         autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Date of birth</label
+                      >
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.dob"
+                        required
+                         autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Sex</label
+                      >
+                      <select
+                          v-model="form.sex"
+                          class="form-control"
+                          required
+                        >
+                          <option disabled selected>Select Sex</option>
+                          <option value="female">Female</option>
+                        <option value="male">Male</option>
+                          
+                        </select>
                     </div>
 
                     <div class="col-lg-6 mt-3">
@@ -65,6 +110,7 @@
                         placeholder=""
                         v-model="form.phoneNumber"
                         required
+                         autocomplete="off"
                       />
                     </div>
                     <div class="col-lg-6 mt-3">
@@ -77,6 +123,7 @@
                         placeholder=""
                         v-model="form.emailAddress"
                         required
+                         autocomplete="off"
                       />
                     </div>
 
@@ -91,6 +138,7 @@
                         placeholder=""
                         v-model="form.password"
                         required
+                         autocomplete="off"
                       />
                     </div>
                     <div class="col-lg-6 mt-3">
@@ -104,6 +152,7 @@
                         placeholder=""
                         v-model="confirmPassword"
                         required
+                         autocomplete="off"
                       />
                     </div>
                   </div>
@@ -120,7 +169,7 @@
           <transition name="slide-fade" v-if="secondPage">
             <div class="second-page page">
               <div class="container resize">
-                <form @submit.prevent="submitForm">
+                <form @submit.prevent="submitForm" autocomplete="off">
                   <h1 class="title">Provide Your Business Details</h1>
 
                   <div class="form-row mt-5">
@@ -134,21 +183,11 @@
                         id="formGroupExampleInput"
                         placeholder=""
                         v-model="form.transactionPin"
+                         autocomplete="off"
+                         required
                       />
                     </div>
-                    <div class="col-lg-6 mt-3">
-                      <label class="formlabel" for="formGroupExampleInput"
-                        >Contact Person</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="formGroupExampleInput"
-                        placeholder=""
-                        v-model="form.contactPersonName"
-                      />
-                    </div>
-                    <div class="col-lg-6 mt-3">
+                        <div class="col-lg-6 mt-3">
                       <label class="formlabel" for="formGroupExampleInput"
                         >No of Terminals</label
                       >
@@ -158,8 +197,75 @@
                         id="formGroupExampleInput"
                         placeholder=""
                         v-model="form.noOfTerminalOnSignUp"
+                         autocomplete="off"
+                         required
                       />
                     </div>
+                     <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Means of identification</label
+                      >
+                      <select
+                          v-model="form.moi"
+                          class="form-control"
+                          @change="onStateChange($event)"
+                          required
+                           
+                        >
+                          <option disabled selected>Select identification</option>
+                          <option
+                            v-for="(item, index) in iname"
+                            :key="index"
+                            :value="item"
+                          >
+                            {{ item.name }}</option
+                          >
+                        </select>
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >ID Number</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.IdNo"
+                         autocomplete="off"
+                         required
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Next of Kin</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.contactPersonName"
+                         autocomplete="off"
+                         required
+                      />
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                      <label class="formlabel" for="formGroupExampleInput"
+                        >Next of Kin Phone Number</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder=""
+                        v-model="form.Tel_Nok"
+                         autocomplete="off"
+                         required
+                      />
+                    </div>
+                   
+                
                     <div class="col-lg-6 mt-3 form-row">
                       <label class="formlabel" for="formGroupExampleInput"
                         >Upload Business Logo(PNG/SVG)</label
@@ -191,6 +297,7 @@
                         placeholder="Enter Bvn"
                         v-model="form.bvn"
                         required
+                         autocomplete="off"
                       />
                     </div>
 
@@ -209,7 +316,7 @@
                       </ul>
                     </div>
 
-                    <div class="form-row">
+                    <!-- <div class="form-row"> -->
                       <div class="col-lg-4 mt-3">
                         <label class="formlabel" for="formGroupExampleInput"
                           >State</label
@@ -219,6 +326,7 @@
                           class="form-control"
                           @change="onStateChange($event)"
                           required
+                           
                         >
                           <option disabled selected>Select State</option>
                           <option
@@ -260,9 +368,10 @@
                           placeholder=""
                           v-model="form.city"
                           required
+                           autocomplete="off"
                         />
                       </div>
-                    </div>
+                    <!-- </div> -->
                     <div class="col-lg-6 mt-3">
                       <label class="formlabel" for="formGroupExampleInput"
                         >Address Line 1</label
@@ -274,6 +383,7 @@
                         placeholder=""
                         v-model="form.addressLine1"
                         required
+                         autocomplete="off"
                       />
                     </div>
                     <div class="col-lg-6 mt-3">
@@ -286,6 +396,7 @@
                         id="formGroupExampleInput"
                         placeholder=""
                         v-model="form.addressLine2"
+                         autocomplete="off"
                       />
                     </div>
                   </div>
@@ -302,7 +413,7 @@
 
                     <div class="col-lg-6 mt-5">
                       <button class="btn-login col-lg-6" type="submit">
-                        Submit
+                        Submit 
                       </button>
                     </div>
                   </div>
@@ -328,10 +439,18 @@ export default {
     return {
       states: [],
       lgas: [],
+      baseurl:process.env.BASE_URL,
+      titles:process.env.VUE_APP_TITLE,
       loader: false,
       firstPage: Boolean,
       secondPage: false,
+iname:[
+  {name:"Voter's Card", value:"nimc"},
+  {name:"Driver's Licence", value:"drivers_license"},
+  {name:"NIMC", value:"nimc"},
+  {name:"International Passport", value:"ipassport"},
 
+],
       confirmPassword: "",
       form: {
         username: "",
@@ -350,6 +469,14 @@ export default {
         state: "",
         lga: "",
         city: "",
+
+        dob:"",//date of birth done
+        sex:"",//done
+        mmname:"",//mothers maiden name
+        IdNo:"", //id number done
+        Tel_Nok:"",//nok number
+        moi:""//means of idenity
+
       },
     };
   },
@@ -360,8 +487,8 @@ export default {
     async checkFirstPage() {
       this.loader = true;
       const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-      await delay(5000);
-      console.log("tim");
+      await delay(2000);
+      
       if (this.form.password !== this.confirmPassword) {
         this.loader = false;
         this.secondPage = false;
@@ -399,39 +526,35 @@ export default {
       this.form.noOfTerminalOnSignUp = "";
     },
     async submitForm() {
-      this.$router.push("/verifyemail");
+  
       try {
         this.loader = true;
         const user = await this.axios.post(
           "http://52.149.222.131:5009/api/v1/users/register/agent",
-          // "uniqueParameter" : this.email,
-          // "password": this.password
-          this.form
-          // {
-          //   addressLine1: "no 17 Kado Binko",
-          //   addressLine2: "",
-          //   agentName: "Babatope Oke",
-          //   bvn: "22222222223",
-          //   city: "FCT Abuja",
-          //   contactPersonName: "Babatope Oke",
-          //   emailAddress: "babatope.oke@bizzdeskgroup.com",
-          //   lga: "AMAC",
-          //   logoUrl: "",
-          //   password: "1234567890",
-          //   phoneNumber: "08064518152",
-          //   state: "FCT Abuja",
-          //   transactionPin: "1234",
-          //   username: "babatope",
-          // }
+        this.form
+
+          
+       
         );
-        if (user.data.responseCode === 0) {
+        if (user.data.data.responseCode === 0) {
+           this.$store.commit("setAuthentication", true);
           // const currentUser = JSON.parse(user.data.data)
           this.loader = false;
-          this.form;
+           this.$toast.open({
+            message: `<p style="color:white;">${user.data.data.responseMessage}</p>`,
+            type: "success",
+            duration: 5000,
+            dismissible: true,
+            position: "top-right",
+          });
+          this.$router.push("/verifyemail");
+          this.resetState();
         } else {
           this.loader = false;
+          console.log(user,"here")
+          
           this.$toast.open({
-            message: `<p style="color:white;">${user.data.responseMessage}</p>`,
+            message: `<p style="color:white;">${user.data.data.responseMessage}</p>`,
             type: "error",
             duration: 5000,
             dismissible: true,
@@ -439,9 +562,11 @@ export default {
           });
         }
       } catch (e) {
+         
+           
         this.loader = false;
         this.$toast.open({
-          message: `<p style="color:white;">${e}</p>`,
+          message: `<p style="color:white;">${e.data.data.responseMessage}</p>`,
           type: "error",
           duration: 5000,
           dismissible: true,
@@ -451,57 +576,12 @@ export default {
       }
     },
     selectFile(event) {
-      console.log("here");
+      
       let file = event.target.files;
-      console.log(file);
+     
       this.form.logoUrl = JSON.stringify(file);
     },
-    async Login() {
-      this.loader = true;
-      const local_token = localStorage.getItem("token");
-      if (local_token) {
-        this.$router.push("/dashboard/overview");
-        return;
-      }
-      try {
-        const user = await this.axios.post(
-          "http://52.149.222.131:5009/api/v1/" + "paysure/gettoken",
-          {
-            // "uniqueParameter" : this.email,
-            // "password": this.password
-            uniqueParameter: "TESTSANUSI",
-            password: "PASSWORd@123",
-          }
-        );
-        if (user.data.responseCode === 0) {
-          // const currentUser = JSON.parse(user.data.data)
-          this.loader = false;
-          localStorage.setItem("user", JSON.stringify(user.data.data));
-          localStorage.setItem("token", user.data.data.token);
-          this.$router.push("/dashboard/overview");
-        } else {
-          this.loader = false;
-          this.$toast.open({
-            message: `<p style="color:white;">${user.data.responseMessage}</p>`,
-            type: "error",
-            duration: 5000,
-            dismissible: true,
-            position: "top-right",
-          });
-        }
-      } catch (e) {
-        this.loader = false;
-        this.$toast.open({
-          message: `<p style="color:white;">${e}</p>`,
-          type: "error",
-          duration: 5000,
-          dismissible: true,
-          position: "top-right",
-        });
-        console.log(e);
-      }
-    },
-
+  
     next() {
       if (this.firstPage) {
         this.secondPage = true;
@@ -526,11 +606,12 @@ export default {
     },
   },
   mounted() {
+    console.log(this.titles, "baseurltext");
     this.firstPage = true;
     this.secondPage = false;
-
     this.states = NaijaStates.states();
-    console.log(process.env.BASE_URL, "baseurl");
+    console.log(this.baseurl, "baseurl");
+    
   },
 };
 </script>
@@ -634,7 +715,7 @@ export default {
   background-color: var(--primary-color);
   color: var(--white-color);
   border-radius: 4px;
-  width: 400px;
+  width: 100%;
   height: 52px;
 
   cursor: pointer;
