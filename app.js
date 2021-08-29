@@ -32,11 +32,11 @@ app.get('*', (req, res) => {
 
 
 // App
-app.use(express.static('dist'));
 // app.use(express.static('dist'));
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve('dist/index.html'));
-});
+// // app.use(express.static('dist'));
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve('dist/index.html'));
+// });
 
 
 // httpsServer.listen(PORT);
