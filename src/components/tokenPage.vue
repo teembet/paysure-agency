@@ -75,6 +75,7 @@ export default {
     const vm = this;
     return {
       loader: false,
+      baseurl:process.env.VUE_APP_BASE_URL,
       handlers: {
         keyup: vm.keyUp,
         keydown: vm.keyDown,
@@ -140,7 +141,7 @@ export default {
       try {
         this.loader = true;
         const user = await this.axios.post(
-          `http://52.149.222.131:5009/api/v1//users/verifycode/${formInput}`, 
+          `${this.baseurl}/users/verifycode/${formInput}`, 
         );
         if (user.data.data.responseCode === 0) {
          

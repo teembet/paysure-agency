@@ -284,6 +284,7 @@ export default {
     Nav,
     Footer,
   },
+ 
 };
 </script>
 

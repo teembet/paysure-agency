@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.9204ae81dd2436e40dbe6272fc699f61.js"
+  "/precache-manifest.4d28e6ab3c916f0a7a39bae9eb0d3787.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "paysure-agency"});

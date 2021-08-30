@@ -439,8 +439,8 @@ export default {
     return {
       states: [],
       lgas: [],
-      baseurl:process.env.BASE_URL,
-      titles:process.env.VUE_APP_TITLE,
+      baseurl:process.env.VUE_APP_BASE_URL,
+   
       loader: false,
       firstPage: Boolean,
       secondPage: false,
@@ -530,7 +530,7 @@ iname:[
       try {
         this.loader = true;
         const user = await this.axios.post(
-          "http://52.149.222.131:5009/api/v1/users/register/agent",
+          `${this.baseurl}users/register/agent`,
         this.form
 
           
@@ -606,11 +606,11 @@ iname:[
     },
   },
   mounted() {
-    console.log(this.titles, "baseurltext");
+console.log(this.baseurl)
     this.firstPage = true;
     this.secondPage = false;
     this.states = NaijaStates.states();
-    console.log(this.baseurl, "baseurl");
+    
     
   },
 };
