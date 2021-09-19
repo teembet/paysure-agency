@@ -32,7 +32,7 @@
                 Click continue to verify your account
               </p>
               <router-link
-                to="/tokenpage"
+                to="/phone-token"
                 class="btn-login col-lg-6 mt-5"
                 tag="button"
                 >Continue</router-link

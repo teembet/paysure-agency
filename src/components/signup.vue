@@ -536,7 +536,9 @@ iname:[
           
        
         );
+         localStorage.setItem("phone",this.form.phoneNumber)
         if (user.data.data.responseCode === 0) {
+         
            this.$store.commit("setAuthentication", true);
           // const currentUser = JSON.parse(user.data.data)
           this.loader = false;
@@ -547,7 +549,7 @@ iname:[
             dismissible: true,
             position: "top-right",
           });
-          this.$router.push("/verifyemail");
+          this.$router.push("/phone-token");
           this.resetState();
         } else {
           this.loader = false;
